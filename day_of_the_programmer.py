@@ -21,7 +21,5 @@ for month in range(12):
         difference = total_day - 256
         day = day_of_month - difference  - 1
         month = month + 1
-        if day < 10: day = "0{}".format(day)
-        if month < 10: month = "0{}".format(month)
-        print("{}.{}.{}".format(day, month, year))
+        print("{:02d}.{:02d}.{}".format(day, month, year))
         break
