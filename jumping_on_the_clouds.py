@@ -1,22 +1,18 @@
-nk = input().split()
-n = int(nk[0])
-k = int(nk[1])
+n = int(input())
 c = list(map(int, input().rstrip().split()))
-e = 100
-current_index = 0
-is_first_round = True
-while(current_index != 0 or is_first_round):
-    is_first_round = False
-    new_index = (current_index + k) % n
-    e -= 1
-    value = c[new_index]
-    if value == 1:
-        e -= 2
-    
-    if new_index == 0:
+current_pos = 0
+max_pos = len(c) - 1
+move_count = 0
+while current_pos != max_pos:
+    moves = [2, 1]
+    for move in moves:
+        temp_pos = move + current_pos
+        if temp_pos > max_pos:
+            continue
+        temp_i = c[temp_pos]
+        if temp_i == 1:
+            continue
+        current_pos = temp_pos
+        move_count += 1
         break
-    if current_index + k >= n:
-        current_index = 0
-    else:
-        current_index = new_index
-print(e)
+print(move_count)
